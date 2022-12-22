@@ -1,10 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client"; //only call once in entire React application
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+//ReactDOM used to render componenets/entire application into the real DOM (i.e. div with id="root")
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <App />
