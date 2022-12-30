@@ -1,13 +1,14 @@
 import "./App.css";
 
-const Person = (props) => {
-  return (
-    <>
-      <h1>Name: {props.name ? props.name : "No Name"} </h1>
-      <h2>Age: {props.age}</h2>
-    </>
-  );
-};
+/*Custom Component*/
+//const Person = (props) => {
+//  return (
+//    <>
+//      <h1>Name: {props.name ? props.name : "No Name"} </h1>
+//      <h2>Age: {props.age}</h2>
+//    </>
+//  );
+//};
 
 const App = () => {
   const name = "Banksy";
