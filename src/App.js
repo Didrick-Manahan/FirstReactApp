@@ -1,37 +1,63 @@
+import React, { useEffect, useState } from "react";
+import MovieCard from "./MovieCard";
 import "./App.css";
+import SearchIcon from "./search.svg";
+const API_URL = "http://www.omdbapi.com?apikey=e596ba6";
 
-/*Custom Component*/
-//const Person = (props) => {
-//  return (
-//    <>
-//      <h1>Name: {props.name ? props.name : "No Name"} </h1>
-//      <h2>Age: {props.age}</h2>
-//    </>
-//  );
+//const movie1 = {
+//  Title: "The Amazing Spiderman 2 Webb Cut",
+//  Year: "2021",
+//  imdbID: "tt18351128",
+//  Type: "movie",
+//  Poster:
+//    "https://m.media-amazon.com/images/M/MV5BYzYzZDViNWYtNWViMS00NDMxLThlN2YtZjFkOWMwODkzNzhiXkEyXkFqcGdeQXVyMTUwMzM4NzU0._V1_SX300.jpg",
 //};
 
 const App = () => {
-  const name = "Banksy";
-  const isNameShowing = false;
+  const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const searchMovies = async (title) => {
+    const response = await fetch(`${API_URL}&s=${title}`);
+    const data = await response.json();
+
+    setMovies(data.Search);
+    console.log(data);
+  };
+
+  useEffect(() => {
+    searchMovies("Spiderman");
+  }, []);
 
   return (
-    //code below is JSX (class in HTML, className in JS)
-    //inside curly braces, you can put an valid Javascript expression!
-    //You can dynamically render real data inside browser
-    <div className="App"></div>
+    <div classname="app">
+      <h1>MovieLand</h1>
 
-    /* Person component dyanmic rendering*/
-    //</div><h1> Hello, {name} </h1>
-    //</div><Person name={"John"} age={22 + 22} />
-    //</div><Person name={"Banksy"} age={24} />
-    //</div><Person />
-    //</div>{isNameShowing ? (
-    //</div>  name
-    //</div>) : (
-    //</div>  <>
-    //</div>    <h1>testing failed</h1> <h2>Oh no!</h2>
-    //</div>  </>
-    //</div>)}
+      <div className="search">
+        <input
+          placeholder="Search for movies"
+          value={searchTerm}
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+          }}
+        />
+        <img
+          src={SearchIcon}
+          alt="search"
+          onClick={() => searchMovies(searchTerm)}
+        />
+      </div>
+      {movies?.length > 0 ? (
+        <div className="container">
+          {movies.map((movie) => (
+            <MovieCard movie={movie} />
+          ))}
+        </div>
+      ) : (
+        <div className="empty">
+          <h2>No movies found</h2>
+        </div>
+      )}
+    </div>
   );
 };
 

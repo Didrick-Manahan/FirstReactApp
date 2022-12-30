@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client"; //only call once in entire React application
-import "./index.css";
+//import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
