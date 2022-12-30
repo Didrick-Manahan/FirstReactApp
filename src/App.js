@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import MovieCard from "./MovieCard";
 import "./App.css";
 import SearchIcon from "./search.svg";
@@ -21,16 +21,12 @@ const App = () => {
     const data = await response.json();
 
     setMovies(data.Search);
-    console.log(data);
+    //console.log(data);
   };
-
-  useEffect(() => {
-    searchMovies("Spiderman");
-  }, []);
 
   return (
     <div classname="app">
-      <h1>MovieLand</h1>
+      <h1>Banksy Movie Search</h1>
 
       <div className="search">
         <input
